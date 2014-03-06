@@ -50,6 +50,7 @@ NFS, iSCSI, NBD, FCoE with the dracut-network package.
 
 %build
 # >> build pre
+cd upstream
 # << build pre
 
 %reconfigure --disable-static \
@@ -65,6 +66,7 @@ make %{?jobs:-j%jobs}
 %install
 rm -rf %{buildroot}
 # >> install pre
+cd upstream
 # << install pre
 %make_install
 
