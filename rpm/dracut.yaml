@@ -40,6 +40,7 @@ ConfigOptions:
     - --systemdsystemunitdir=%{_unitdir}
     - --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion)
     - --libdir=%{_prefix}/lib
+    - --disable-documentation
 
 Files:
     - "%{_bindir}/dracut"

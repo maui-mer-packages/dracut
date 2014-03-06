@@ -56,7 +56,8 @@ cd upstream
 %configure --disable-static \
     --systemdsystemunitdir=%{_unitdir} \
     --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion) \
-    --libdir=%{_prefix}/lib
+    --libdir=%{_prefix}/lib \
+    --disable-documentation
 
 make %{?jobs:-j%jobs}
 
