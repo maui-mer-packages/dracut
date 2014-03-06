@@ -43,7 +43,7 @@ ConfigOptions:
     - --disable-documentation
 
 Files:
-    - "%{_bindir}/dracut"
+    - "%{_bindir}/dracut*"
     - "%{_bindir}/mkinitrd"
     - "%{_bindir}/lsinitrd"
     - "%{_datadir}/bash-completion/"

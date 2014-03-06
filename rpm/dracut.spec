@@ -76,7 +76,7 @@ cd upstream
 
 %files
 %defattr(-,root,root,-)
-%{_bindir}/dracut
+%{_bindir}/dracut*
 %{_bindir}/mkinitrd
 %{_bindir}/lsinitrd
 %{_datadir}/bash-completion/
