@@ -71,6 +71,8 @@ cd upstream
 %make_install
 
 # >> install post
+%lang_package
+%docs_package
 # << install post
 
 %files
