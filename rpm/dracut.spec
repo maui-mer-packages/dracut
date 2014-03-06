@@ -72,7 +72,6 @@ cd upstream
 %make_install
 
 # >> install post
-%docs_package
 # << install post
 
 %files
@@ -83,7 +82,7 @@ cd upstream
 %{_datadir}/bash-completion/
 %{_libdir}/dracut/
 %{_libdir}/kernel/
-%{_sysconfdir}/dracut.conf
 %{_sysconfdir}/dracut.conf.d/
 # >> files
+%config %{_sysconfdir}/dracut.conf
 # << files
