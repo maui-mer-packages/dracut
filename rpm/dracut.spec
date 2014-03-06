@@ -53,7 +53,7 @@ NFS, iSCSI, NBD, FCoE with the dracut-network package.
 cd upstream
 # << build pre
 
-%reconfigure --disable-static \
+%configure --disable-static \
     --systemdsystemunitdir=%{_unitdir} \
     --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion) \
     --libdir=%{_prefix}/lib

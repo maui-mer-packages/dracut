@@ -35,7 +35,7 @@ Conflicts:
     - grubby < 8.23
     - mdadm < 3.2.6
 
-Configure: reconfigure
+Configure: configure
 ConfigOptions:
     - --systemdsystemunitdir=%{_unitdir}
     - --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion)
