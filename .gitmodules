@@ -1,0 +1,3 @@
+[submodule "dracut"]
+	path = dracut
+	url = git://git.kernel.org/pub/scm/boot/dracut/dracut.git

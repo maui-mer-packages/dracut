@@ -1,0 +1,42 @@
+Name: dracut
+Summary: Initramfs generator using udev
+Version: 036
+Release: 1
+License: GPLv2+ and LGPLv2+
+Group: System/Libraries
+URL: https://dracut.wiki.kernel.org/
+Description: |
+    dracut contains tools to create a bootable initramfs for 2.6 Linux kernels.
+    Unlike existing implementations, dracut does hard-code as little as possible
+    into the initramfs. dracut contains various modules which are driven by the
+    event-based udev. Having root on MD, DM, LVM2, LUKS is supported as well as
+    NFS, iSCSI, NBD, FCoE with the dracut-network package.
+Sources:
+    - dracut-%{version}.tar.xz
+
+PkgBR:
+    - bash
+Requires: 
+    - bash >= 4
+    - coreutils
+    - cpio
+    - findutils
+    - grep
+    - hardlink
+    - gzip
+    - xz
+    - kmod
+    - sed
+    - kpartx
+    - util-linux >= 2.21
+    - systemd >= 199
+    - procps-ng
+Conflicts:
+    - grubby < 8.23
+    - mdadm < 3.2.6
+
+Configure: reconfigure
+ConfigOptions:
+    - --systemdsystemunitdir=%{_unitdir}
+    - --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion)
+    - --libdir=%{_prefix}/lib
