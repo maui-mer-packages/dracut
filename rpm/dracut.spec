@@ -29,7 +29,7 @@ Requires:   sed
 Requires:   kpartx
 Requires:   util-linux >= 2.21
 Requires:   systemd >= 199
-Requires:   procps-ng
+Requires:   procps
 BuildRequires:  bash
 Conflicts:   grubby < 8.23
 Conflicts:   mdadm < 3.2.6
