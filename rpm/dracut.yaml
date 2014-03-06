@@ -40,3 +40,12 @@ ConfigOptions:
     - --systemdsystemunitdir=%{_unitdir}
     - --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion)
     - --libdir=%{_prefix}/lib
+
+Files:
+    - "%{_bindir}/dracut"
+    - "%{_bindir}/mkinitrd"
+    - "%{_bindir}/lsinitrd"
+    - "%{_datadir}/bash-completion/"
+    - "%{_libdir}/dracut/"
+    - "%{_libdir}/kernel/"
+    - "%{_sysconfdir}/kernel/"
