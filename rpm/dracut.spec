@@ -84,6 +84,7 @@ cd upstream
 %{_datadir}/bash-completion/
 %{_libdir}/dracut/
 %{_libdir}/kernel/
-%{_sysconfdir}/kernel/
+%{_sysconfdir}/dracut.conf
+%{_sysconfdir}/dracut.conf.d/
 # >> files
 # << files
