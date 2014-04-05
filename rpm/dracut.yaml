@@ -18,7 +18,7 @@ PkgBR:
     - bash
 Requires: 
     - bash >= 4
-    - coreutils
+    - coreutils >= 8
     - cpio
     - findutils
     - grep
