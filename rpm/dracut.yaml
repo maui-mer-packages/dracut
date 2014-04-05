@@ -16,6 +16,7 @@ Sources:
 
 PkgBR:
     - bash
+    - systemd
 Requires: 
     - bash >= 4
     - coreutils >= 8
