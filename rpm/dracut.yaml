@@ -38,7 +38,7 @@ Conflicts:
 
 Configure: configure
 ConfigOptions:
-    - --systemdsystemunitdir=%{_libdir}/systemd/system
+    - --systemdsystemunitdir=%{_unitdir}
     - --bashcompletiondir=%{_datadir}/bash-completion
     - --libdir=%{_prefix}/lib
     - --disable-documentation
@@ -46,7 +46,7 @@ ConfigOptions:
 Files:
     - "%config %{_sysconfdir}/dracut.conf"
     - "%dir %{_sysconfdir}/dracut.conf.d"
-    - "%dir %{_libdir}/systemd/system/initrd.target.wants"
+    - "%dir %{_unitdir}/initrd.target.wants"
     - "%attr(0644,root,root) %ghost %config(missingok,noreplace) %{_localstatedir}/log/dracut.log"
     - "%dir %{_sharedstatedir}/initramfs"
     - "%dir /boot/dracut"
@@ -58,5 +58,5 @@ Files:
     - "%{_datadir}/bash-completion/"
     - "%{_prefix}/lib/dracut/"
     - "%{_prefix}/lib/kernel/"
-    - "%{_libdir}/systemd/system/*"
-    - "%{_libdir}/systemd/system/shutdown.target.wants/*"
+    - "%{_unitdir}/*"
+    - "%{_unitdir}/shutdown.target.wants/*"

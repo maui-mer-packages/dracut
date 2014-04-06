@@ -55,7 +55,7 @@ cd upstream
 # << build pre
 
 %configure --disable-static \
-    --systemdsystemunitdir=%{_libdir}/systemd/system \
+    --systemdsystemunitdir=%{_unitdir} \
     --bashcompletiondir=%{_datadir}/bash-completion \
     --libdir=%{_prefix}/lib \
     --disable-documentation
@@ -97,10 +97,10 @@ mkdir -p %{buildroot}%{_sharedstatedir}/initramfs
 # Configuration
 cat > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/01-dist.conf <<EOF
 prefix="/"
-systemdutildir=/usr/lib/systemd
-systemdsystemunitdir=/usr/lib/systemd/system
-systemdsystemconfdir=/etc/systemd/system
-udevdir=/usr/lib/udev
+systemdutildir=%{_prefix}/lib/systemd
+systemdsystemunitdir=%{_unitdir}
+systemdsystemconfdir=%{_sysconfdir}/systemd/system
+udevdir=%{_libdir}/udev
 hostonly="yes"
 hostonly_cmdline="no"
 EOF
@@ -114,7 +114,7 @@ echo 'dracut_rescue_image="yes"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf
 %defattr(-,root,root,-)
 %config %{_sysconfdir}/dracut.conf
 %dir %{_sysconfdir}/dracut.conf.d
-%dir %{_libdir}/systemd/system/initrd.target.wants
+%dir %{_unitdir}/initrd.target.wants
 %attr(0644,root,root) %ghost %config(missingok,noreplace) %{_localstatedir}/log/dracut.log
 %dir %{_sharedstatedir}/initramfs
 %dir /boot/dracut
@@ -126,7 +126,7 @@ echo 'dracut_rescue_image="yes"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf
 %{_datadir}/bash-completion/
 %{_prefix}/lib/dracut/
 %{_prefix}/lib/kernel/
-%{_libdir}/systemd/system/*
-%{_libdir}/systemd/system/shutdown.target.wants/*
+%{_unitdir}/*
+%{_unitdir}/shutdown.target.wants/*
 # >> files
 # << files
