@@ -124,8 +124,8 @@ echo 'dracut_rescue_image="yes"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf
 %{_bindir}/mkinitrd
 %{_bindir}/lsinitrd
 %{_datadir}/bash-completion/
-%{_libdir}/dracut/
-%{_libdir}/kernel/
+%{_prefix}/lib/dracut/
+%{_prefix}/lib/kernel/
 %{_libdir}/systemd/system/*
 %{_libdir}/systemd/system/shutdown.target.wants/*
 # >> files
