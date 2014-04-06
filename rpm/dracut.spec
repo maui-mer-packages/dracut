@@ -86,5 +86,7 @@ cd upstream
 %{_sysconfdir}/dracut.conf.d/
 %dir %{_sysconfdir}/dracut.conf.d
 %config %{_sysconfdir}/dracut.conf
+%{_unitdir}/initrd.target.wants/
+%dir %{_unitdir}/initrd.target.wants
 # >> files
 # << files
