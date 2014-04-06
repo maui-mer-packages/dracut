@@ -56,7 +56,7 @@ cd upstream
 
 %configure --disable-static \
     --systemdsystemunitdir=%{_unitdir} \
-    --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion) \
+    --bashcompletiondir=%{_datadir}/bash-completion \
     --libdir=%{_prefix}/lib \
     --disable-documentation
 
