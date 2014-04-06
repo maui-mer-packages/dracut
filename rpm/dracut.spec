@@ -73,6 +73,19 @@ cd upstream
 %make_install
 
 # >> install post
+# For systemd, better use systemd-bootchart
+rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/00bootchart
+
+# We don't support dash in the initramfs
+rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/00dash
+
+# Remove Gentoo specific modules
+rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/50gensplash
+
+# With systemd, IMA and selinux modules do not make sense
+rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/96securityfs
+rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/97masterkey
+rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/98integrity
 # << install post
 
 %files
