@@ -55,7 +55,7 @@ cd upstream
 # << build pre
 
 %configure --disable-static \
-    --systemdsystemunitdir=%{_unitdir} \
+    --systemdsystemunitdir=%{_libdir}/systemd/system \
     --bashcompletiondir=%{_datadir}/bash-completion \
     --libdir=%{_prefix}/lib \
     --disable-documentation
@@ -86,7 +86,7 @@ cd upstream
 %{_sysconfdir}/dracut.conf.d/
 %dir %{_sysconfdir}/dracut.conf.d
 %config %{_sysconfdir}/dracut.conf
-%{_unitdir}/initrd.target.wants/
-%dir %{_unitdir}/initrd.target.wants
+%{_libdir}/systemd/system/initrd.target.wants/
+%dir %{_libdir}/systemd/system/initrd.target.wants
 # >> files
 # << files
