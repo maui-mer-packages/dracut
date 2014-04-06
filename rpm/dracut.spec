@@ -93,6 +93,17 @@ mkdir -p %{buildroot}/var/lib/dracut/overlay
 mkdir -p %{buildroot}%{_localstatedir}/log
 touch %{buildroot}%{_localstatedir}/log/dracut.log
 mkdir -p %{buildroot}%{_sharedstatedir}/initramfs
+
+# Configuration
+cat > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/01-dist.conf <<EOF
+prefix="/"
+systemdutildir=/usr/lib/systemd
+systemdsystemunitdir=/usr/lib/systemd/system
+systemdsystemconfdir=/etc/systemd/system
+udevdir=/usr/lib/udev
+hostonly="yes"
+hostonly_cmdline="no"
+EOF
 # << install post
 
 %files
