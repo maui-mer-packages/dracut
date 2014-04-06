@@ -6,6 +6,7 @@
 Name:       dracut
 
 # >> macros
+%define _unitdir /lib/systemd/system
 # << macros
 
 Summary:    Initramfs generator using udev
