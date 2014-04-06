@@ -77,16 +77,16 @@ cd upstream
 
 %files
 %defattr(-,root,root,-)
+%config %{_sysconfdir}/dracut.conf
+%dir %{_sysconfdir}/dracut.conf.d
+%dir %{_libdir}/systemd/system/initrd.target.wants
 %{_bindir}/dracut*
 %{_bindir}/mkinitrd
 %{_bindir}/lsinitrd
 %{_datadir}/bash-completion/
 %{_libdir}/dracut/
 %{_libdir}/kernel/
-%{_sysconfdir}/dracut.conf.d/
-%dir %{_sysconfdir}/dracut.conf.d
-%config %{_sysconfdir}/dracut.conf
-%{_libdir}/systemd/system/initrd.target.wants/
-%dir %{_libdir}/systemd/system/initrd.target.wants
+%{_libdir}/systemd/system/*
+%{_libdir}/systemd/system/shutdown.target.wants/*
 # >> files
 # << files
