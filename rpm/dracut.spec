@@ -86,6 +86,13 @@ rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/50gensplash
 rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/96securityfs
 rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/97masterkey
 rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/98integrity
+
+# Create directories
+mkdir -p %{buildroot}/boot/dracut
+mkdir -p %{buildroot}/var/lib/dracut/overlay
+mkdir -p %{buildroot}%{_localstatedir}/log
+touch %{buildroot}%{_localstatedir}/log/dracut.log
+mkdir -p %{buildroot}%{_sharedstatedir}/initramfs
 # << install post
 
 %files
@@ -93,6 +100,11 @@ rm -rf %{buildroot}/%{_prefix}/lib/dracut/modules.d/98integrity
 %config %{_sysconfdir}/dracut.conf
 %dir %{_sysconfdir}/dracut.conf.d
 %dir %{_libdir}/systemd/system/initrd.target.wants
+%attr(0644,root,root) %ghost %config(missingok,noreplace) %{_localstatedir}/log/dracut.log
+%dir %{_sharedstatedir}/initramfs
+%dir /boot/dracut
+%dir /var/lib/dracut
+%dir /var/lib/dracut/overlay
 %{_bindir}/dracut*
 %{_bindir}/mkinitrd
 %{_bindir}/lsinitrd
