@@ -32,6 +32,7 @@ Requires:
     - util-linux >= 2.21
     - systemd >= 199
     - procps
+    - tar
 Conflicts:
     - grubby < 8.23
     - mdadm < 3.2.6

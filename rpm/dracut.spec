@@ -31,6 +31,7 @@ Requires:   kpartx
 Requires:   util-linux >= 2.21
 Requires:   systemd >= 199
 Requires:   procps
+Requires:   tar
 BuildRequires:  bash
 BuildRequires:  systemd
 Conflicts:   grubby < 8.23
