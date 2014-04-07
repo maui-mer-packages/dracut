@@ -98,7 +98,7 @@ mkdir -p %{buildroot}%{_sharedstatedir}/initramfs
 # Configuration
 cat > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/01-dist.conf <<EOF
 prefix="/"
-systemdutildir=%{_prefix}/lib/systemd
+systemdutildir=/lib/systemd
 systemdsystemunitdir=%{_unitdir}
 systemdsystemconfdir=%{_sysconfdir}/systemd/system
 udevdir=%{_libdir}/udev
