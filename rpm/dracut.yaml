@@ -59,4 +59,3 @@ Files:
     - "%{_prefix}/lib/dracut/"
     - "%{_prefix}/lib/kernel/"
     - "%{_unitdir}/*"
-    - "%{_unitdir}/shutdown.target.wants/*"

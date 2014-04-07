@@ -128,6 +128,5 @@ echo 'dracut_rescue_image="yes"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf
 %{_prefix}/lib/dracut/
 %{_prefix}/lib/kernel/
 %{_unitdir}/*
-%{_unitdir}/shutdown.target.wants/*
 # >> files
 # << files
