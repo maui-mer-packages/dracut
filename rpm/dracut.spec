@@ -98,6 +98,12 @@ mkdir -p %{buildroot}%{_sharedstatedir}/initramfs
 
 # Configuration
 cat > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/01-dist.conf <<EOF
+i18n_vars="/etc/vconsole.conf:KEYMAP,KEYMAP_TOGGLE /etc/vconsole.conf:FONT,FONT_MAP,FONT_UNIMAP"
+i18n_default_font="latarcyrheb-sun16"
+i18n_install_all="yes"
+stdloglvl=3
+sysloglvl=5
+install_items+=" ps grep cat rm "
 prefix="/"
 systemdutildir=/lib/systemd
 systemdsystemunitdir=%{_unitdir}
