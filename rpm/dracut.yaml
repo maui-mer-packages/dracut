@@ -18,8 +18,8 @@ PkgBR:
     - bash
     - systemd
 Requires: 
-    - bash >= 4
-    - coreutils >= 8
+    - bash >= 1:4.1
+    - coreutils >= 1:8.22
     - cpio
     - findutils
     - grep
