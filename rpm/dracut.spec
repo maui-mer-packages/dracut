@@ -110,7 +110,7 @@ prefix="/"
 systemdutildir=/lib/systemd
 systemdsystemunitdir=%{_unitdir}
 systemdsystemconfdir=%{_sysconfdir}/systemd/system
-udevdir=%{_libdir}/udev
+udevdir=/lib/udev
 hostonly="yes"
 hostonly_cmdline="no"
 EOF
