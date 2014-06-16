@@ -6,7 +6,6 @@
 Name:       dracut
 
 # >> macros
-%define _unitdir /lib/systemd/system
 # << macros
 
 Summary:    Initramfs generator using udev
@@ -32,6 +31,9 @@ Requires:   util-linux >= 2.21
 Requires:   systemd >= 199
 Requires:   procps
 Requires:   tar
+Requires(preun): systemd
+Requires(post): systemd
+Requires(postun): systemd
 BuildRequires:  bash
 BuildRequires:  systemd
 Conflicts:   grubby < 8.23

@@ -37,6 +37,13 @@ Conflicts:
     - grubby < 8.23
     - mdadm < 3.2.6
 
+RequiresPost:
+    - systemd
+RequiresPreUn:
+    - systemd
+RequiresPostUn:
+    - systemd
+
 Configure: configure
 ConfigOptions:
     - --systemdsystemunitdir=%{_unitdir}
