@@ -20,7 +20,7 @@ PkgConfigBR:
     - systemd
 Requires: 
     - bash >= 1:4.1
-    - coreutils >= 1:8.22
+    - coreutils >= 1:8.21
     - cpio
     - findutils
     - grep

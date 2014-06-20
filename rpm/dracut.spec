@@ -17,7 +17,7 @@ URL:        https://dracut.wiki.kernel.org/
 Source0:    dracut-%{version}.tar.xz
 Source100:  dracut.yaml
 Requires:   bash >= 1:4.1
-Requires:   coreutils >= 1:8.22
+Requires:   coreutils >= 1:8.21
 Requires:   cpio
 Requires:   findutils
 Requires:   grep
