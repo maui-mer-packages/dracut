@@ -16,6 +16,7 @@ Sources:
 
 PkgBR:
     - bash
+PkgConfigBR:
     - systemd
 Requires: 
     - bash >= 1:4.1

@@ -34,8 +34,8 @@ Requires:   tar
 Requires(preun): systemd
 Requires(post): systemd
 Requires(postun): systemd
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  bash
-BuildRequires:  systemd
 Conflicts:   grubby < 8.23
 Conflicts:   mdadm < 3.2.6
 
