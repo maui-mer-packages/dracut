@@ -9,7 +9,7 @@ Name:       dracut
 # << macros
 
 Summary:    Initramfs generator using udev
-Version:    037
+Version:    038
 Release:    1
 Group:      System/Libraries
 License:    GPLv2+ and LGPLv2+
