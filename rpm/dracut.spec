@@ -116,7 +116,6 @@ hostonly_cmdline="no"
 EOF
 
 # Default configuration
-echo 'hostonly="no"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/02-generic-image.conf
 echo 'dracut_rescue_image="yes"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/02-rescue.conf
 # << install post
 
