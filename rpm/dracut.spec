@@ -83,6 +83,9 @@ rm -rf %{buildroot}%{_prefix}/lib/dracut/modules.d/00bootchart
 # We don't support dash in the initramfs
 rm -rf %{buildroot}%{_prefix}/lib/dracut/modules.d/00dash
 
+# Remove caps because it's not compatible with systemd
+rm -rf %{buildroot}%{_prefix}/lib/dracut/modules.d/02caps
+
 # Remove Gentoo specific modules
 rm -rf %{buildroot}%{_prefix}/lib/dracut/modules.d/50gensplash
 
