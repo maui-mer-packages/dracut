@@ -48,20 +48,20 @@ NFS, iSCSI, NBD, FCoE with the dracut-network package.
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}/upstream
 
 # >> setup
 # << setup
 
 %build
 # >> build pre
-cd upstream
 # << build pre
 
 %configure --disable-static \
+    --prefix=%{_prefix} \
+    --localstatedir=%{_localstatedir} \
     --systemdsystemunitdir=%{_unitdir} \
     --bashcompletiondir=%{_datadir}/bash-completion \
-    --libdir=%{_prefix}/lib \
     --disable-documentation
 
 make %{?_smp_mflags}
@@ -72,7 +72,6 @@ make %{?_smp_mflags}
 %install
 rm -rf %{buildroot}
 # >> install pre
-cd upstream
 # << install pre
 %make_install
 
@@ -96,7 +95,7 @@ rm -rf %{buildroot}%{_prefix}/lib/dracut/modules.d/98integrity
 
 # Create directories
 mkdir -p %{buildroot}/boot/dracut
-mkdir -p %{buildroot}/var/lib/dracut/overlay
+mkdir -p %{buildroot}%{_localstatedir}/lib/dracut/overlay
 mkdir -p %{buildroot}%{_localstatedir}/log
 touch %{buildroot}%{_localstatedir}/log/dracut.log
 mkdir -p %{buildroot}%{_sharedstatedir}/initramfs
@@ -109,7 +108,7 @@ i18n_install_all="yes"
 stdloglvl=3
 sysloglvl=5
 install_items+=" ps grep cat rm "
-prefix="/"
+prefix="%{_prefix}"
 systemdutildir=%{_prefix}/lib/systemd
 systemdsystemunitdir=%{_unitdir}
 systemdsystemconfdir=%{_sysconfdir}/systemd/system
@@ -132,8 +131,8 @@ echo 'dracut_rescue_image="yes"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf
 %attr(0644,root,root) %ghost %config(missingok,noreplace) %{_localstatedir}/log/dracut.log
 %dir %{_sharedstatedir}/initramfs
 %dir /boot/dracut
-%dir /var/lib/dracut
-%dir /var/lib/dracut/overlay
+%dir %{_localstatedir}/lib/dracut
+%dir %{_localstatedir}/lib/dracut/overlay
 %{_bindir}/dracut*
 %{_bindir}/mkinitrd
 %{_bindir}/lsinitrd

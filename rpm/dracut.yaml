@@ -13,6 +13,7 @@ Description: |
     NFS, iSCSI, NBD, FCoE with the dracut-network package.
 Sources:
     - dracut-%{version}.tar.xz
+SetupOptions: -q -n %{name}-%{version}/upstream
 
 PkgBR:
     - bash
@@ -47,9 +48,10 @@ RequiresPostUn:
 
 Configure: configure
 ConfigOptions:
+    - --prefix=%{_prefix}
+    - --localstatedir=%{_localstatedir}
     - --systemdsystemunitdir=%{_unitdir}
     - --bashcompletiondir=%{_datadir}/bash-completion
-    - --libdir=%{_prefix}/lib
     - --disable-documentation
 
 Files:
@@ -59,8 +61,8 @@ Files:
     - "%attr(0644,root,root) %ghost %config(missingok,noreplace) %{_localstatedir}/log/dracut.log"
     - "%dir %{_sharedstatedir}/initramfs"
     - "%dir /boot/dracut"
-    - "%dir /var/lib/dracut"
-    - "%dir /var/lib/dracut/overlay"
+    - "%dir %{_localstatedir}/lib/dracut"
+    - "%dir %{_localstatedir}/lib/dracut/overlay"
     - "%{_bindir}/dracut*"
     - "%{_bindir}/mkinitrd"
     - "%{_bindir}/lsinitrd"
