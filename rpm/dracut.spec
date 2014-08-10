@@ -116,6 +116,7 @@ udevdir=%{_prefix}/lib/udev
 hostonly="yes"
 hostonly_cmdline="no"
 add_dracutmodules+=" i18n "
+add_drivers+=" drm "
 filesystems+=" btrfs "
 EOF
 
