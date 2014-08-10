@@ -47,6 +47,26 @@ event-based udev. Having root on MD, DM, LVM2, LUKS is supported as well as
 NFS, iSCSI, NBD, FCoE with the dracut-network package.
 
 
+%package config-generic
+Summary:    dracut configuration to turn off hostonly image generation
+Group:      System/Base
+Requires:   %{name} = %{version}-%{release}
+
+%description config-generic
+This package provides the configuration to turn off the host specific initramfs
+generation with dracut and generates a generic image by default.
+
+
+%package config-rescue
+Summary:    dracut configuration to turn on rescue image generation
+Group:      System/Base
+Requires:   %{name} = %{version}-%{release}
+
+%description config-rescue
+This package provides the configuration to turn on the rescue initramfs
+generation with dracut.
+
+
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
@@ -100,7 +120,7 @@ mkdir -p %{buildroot}%{_localstatedir}/log
 touch %{buildroot}%{_localstatedir}/log/dracut.log
 mkdir -p %{buildroot}%{_sharedstatedir}/initramfs
 
-# Configuration
+# Distribution configuration
 cat > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/01-dist.conf <<EOF
 i18n_vars="/etc/vconsole.conf:KEYMAP,KEYMAP_TOGGLE /etc/vconsole.conf:FONT,FONT_MAP,FONT_UNIMAP"
 i18n_default_font="latarcyrheb-sun16"
@@ -120,7 +140,12 @@ add_drivers+=" drm "
 filesystems+=" btrfs "
 EOF
 
-# Default configuration
+# Generic image configuration
+echo 'hostonly="no"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/02-generic-image.conf
+
+# Rescue
+mkdir -p %{buildroot}%{_sysconfdir}/kernel/postinst.d
+install -m 0755 51-dracut-rescue-postinst.sh %{buildroot}%{_sysconfdir}/kernel/postinst.d/51-dracut-rescue-postinst.sh
 echo 'dracut_rescue_image="yes"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/02-rescue.conf
 # << install post
 
@@ -141,5 +166,23 @@ echo 'dracut_rescue_image="yes"' > %{buildroot}%{_prefix}/lib/dracut/dracut.conf
 %{_prefix}/lib/dracut/
 %{_prefix}/lib/kernel/
 %{_unitdir}/*
+%exclude %{_prefix}/lib/dracut/dracut.conf.d/02-generic-image.conf
+%exclude %{_prefix}/lib/dracut/dracut.conf.d/02-rescue.conf
+%exclude %{_prefix}/lib/kernel/install.d/51-dracut-rescue.install
+%exclude %{_sysconfdir}/kernel/postinst.d/51-dracut-rescue-postinst.sh
 # >> files
 # << files
+
+%files config-generic
+%defattr(-,root,root,-)
+%{_prefix}/lib/dracut/dracut.conf.d/02-generic-image.conf
+# >> files config-generic
+# << files config-generic
+
+%files config-rescue
+%defattr(-,root,root,-)
+%{_prefix}/lib/dracut/dracut.conf.d/02-rescue.conf
+%{_prefix}/lib/kernel/install.d/51-dracut-rescue.install
+%{_sysconfdir}/kernel/postinst.d/51-dracut-rescue-postinst.sh
+# >> files config-rescue
+# << files config-rescue

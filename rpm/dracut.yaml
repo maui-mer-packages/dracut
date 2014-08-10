@@ -70,3 +70,27 @@ Files:
     - "%{_prefix}/lib/dracut/"
     - "%{_prefix}/lib/kernel/"
     - "%{_unitdir}/*"
+    - "%exclude %{_prefix}/lib/dracut/dracut.conf.d/02-generic-image.conf"
+    - "%exclude %{_prefix}/lib/dracut/dracut.conf.d/02-rescue.conf"
+    - "%exclude %{_prefix}/lib/kernel/install.d/51-dracut-rescue.install"
+    - "%exclude %{_sysconfdir}/kernel/postinst.d/51-dracut-rescue-postinst.sh"
+
+SubPackages:
+    - Name: config-generic
+      Summary: dracut configuration to turn off hostonly image generation
+      Group: System/Base
+      Description: |
+        This package provides the configuration to turn off the host specific initramfs
+        generation with dracut and generates a generic image by default.
+      Files:
+         - "%{_prefix}/lib/dracut/dracut.conf.d/02-generic-image.conf"
+    - Name: config-rescue
+      Summary: dracut configuration to turn on rescue image generation
+      Group: System/Base
+      Description: |
+        This package provides the configuration to turn on the rescue initramfs
+        generation with dracut.
+      Files:
+         - "%{_prefix}/lib/dracut/dracut.conf.d/02-rescue.conf"
+         - "%{_prefix}/lib/kernel/install.d/51-dracut-rescue.install"
+         - "%{_sysconfdir}/kernel/postinst.d/51-dracut-rescue-postinst.sh"
